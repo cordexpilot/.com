@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CordexPilot</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:white;
+color:#222;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#f4f1ea;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logo-area{
+display:flex;
+align-items:center;
+}
+
+.logo{
+width:42px;
+height:42px;
+border-radius:50%;
+margin-right:10px;
+}
+
+.brand{
+font-size:22px;
+font-weight:bold;
+}
+
+/* SEARCH BAR */
+
+.search-box{
+display:flex;
+}
+
+.search-box input{
+padding:9px;
+width:260px;
+border:1px solid #ccc;
+border-radius:6px 0 0 6px;
+}
+
+.search-box button{
+padding:9px 18px;
+border:none;
+background:#0077ff;
+color:white;
+border-radius:0 6px 6px 0;
+cursor:pointer;
+}
+
+/* VIDEO SECTION */
+
+.container{
+width:90%;
+margin:auto;
+margin-top:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+flex:1;
+}
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+cursor:pointer;
+transition:0.25s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+}
+
+.title{
+padding:14px;
+font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:18px;
+background:#f4f1ea;
+margin-top:auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo-area">
+<img src="images/logo.png" class="logo">
+<div class="brand">CordexPilot</div>
+</div>
+
+<div class="search-box">
+<input id="searchInput" placeholder="Search videos">
+<button onclick="searchVideos()">Search</button>
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="card" data-title="python" onclick="openVideo('o7wTDvKnE3k')">
+<img src="https://img.youtube.com/vi/o7wTDvKnE3k/hqdefault.jpg">
+<div class="title">History of Python</div>
+</div>
+
+<div class="card" data-title="xiaomi" onclick="openVideo('CgojK6EL_ls')">
+<img src="https://img.youtube.com/vi/CgojK6EL_ls/hqdefault.jpg">
+<div class="title">The Success Story of Xiaomi</div>
+</div>
+
+<div class="card" data-title="linux" onclick="openVideo('9EcmriJQb7s')">
+<img src="https://img.youtube.com/vi/9EcmriJQb7s/hqdefault.jpg">
+<div class="title">Linux Story</div>
+</div>
+
+</div>
+
+
+<footer>
+© 2026 CordexPilot Platform
+</footer>
+
+
+<script>
+
+function openVideo(id){
+window.location.href="video.html?id="+id
+}
+
+function searchVideos(){
+
+let input=document.getElementById("searchInput").value.toLowerCase()
+let cards=document.querySelectorAll(".card")
+
+cards.forEach(card=>{
+
+let title=card.dataset.title
+
+if(title.includes(input)){
+card.style.display="block"
+}else{
+card.style.display="none"
+}
+
+})
+
+}
+
+</script>
+
+</body>
